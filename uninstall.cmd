@@ -1,7 +1,7 @@
+@echo off
 rem author:	ypf791
 rem date:	2017/10/15
 
-@echo off
 pushd .
 
 set config=%~p0config
