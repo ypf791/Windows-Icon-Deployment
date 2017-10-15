@@ -1,26 +1,26 @@
 @echo off
 pushd .
-set target_dir=%1
-if "%target_dir%"=="" set target_dir=..
-if not exist %target_dir%\__icon_resources (
+set config=%~p0config
+if "%1"=="" ( cd .. ) else ( cd %1 )
+if not exist __icon_resources (
 	echo You did not install icons. Nothing to uninstall.
 ) else (
-	for /f "delims=:" %%i in (config) do (
-		echo Removing %target_dir%\%%i\Desktop.ini
-		if exist %target_dir%\%%i\Desktop.ini (
-			attrib -S -H %target_dir%\%%i\Desktop.ini
-			del /f/q %target_dir%\%%i\Desktop.ini
+	for /f "usebackq delims=:" %%i in ("%config%") do (
+		echo Removing %%i\Desktop.ini
+		if exist %%i\Desktop.ini (
+			attrib -S -H %%i\Desktop.ini
+			del /f/q %%i\Desktop.ini
 		) else (
-			call echo:    %target_dir%\%%i\Desktop.ini not found, thus omitted.
+			call echo:    %%i\Desktop.ini not found, thus omitted.
 		)
-		if exist %target_dir%\__icon_resources\old_desktop_ini\%%i (
+		if exist __icon_resources\old_desktop_ini\%%i (
 			call echo:    Restore old Desktop.ini ...
-			move "%target_dir%\__icon_resources\old_desktop_ini\%%i\Desktop.ini" "%target_dir%\%%i\Desktop.ini" >nul
-			attrib +S +H %target_dir%\%%i\Desktop.ini
+			move "__icon_resources\old_desktop_ini\%%i\Desktop.ini" "%%i\Desktop.ini" >nul
+			attrib +S +H %%i\Desktop.ini
 		)
 	)
-	attrib -S -H %target_dir%\__icon_resources
-	rd /q/s %target_dir%\__icon_resources
+	attrib -S -H __icon_resources
+	rd /q/s __icon_resources
 )
 for %%i in (%*) do (
 	if "%%i"=="-s" goto :end
