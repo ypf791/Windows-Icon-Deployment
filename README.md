@@ -17,6 +17,8 @@ The config file consists of lines of the same format:
 
 Note that there are no spaces allowed before or after the colons.
 
+The root of `<icon_file>` is `.\icon_src\`.
+
 If you are using `.ico` files, the `<index>` should always be 0. 
 However, once you have `.dll` as a source (which is the trick Windows do), 
 the `<index>` decides the one chosen from the icon pack.

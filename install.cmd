@@ -8,12 +8,18 @@ pushd .
 set srcdir=%~p0icon_src
 set config=%~p0config
 set __use_copy=
+set __dir=
 
 for %%i in (%*) do (
 	if "%%i"=="-c" set __use_copy=1
 )
 
-if "%1"=="" ( cd .. ) else ( cd %1 )
+for %%i in (%*) do (
+	set tmp_var=%%i
+	if not "!tmp_var:~0,1!"=="-" ( set __dir=%%i )
+)
+
+if defined __dir ( cd %__dir% ) else ( cd .. )
 
 if exist __icon_resources (
 	echo Found __icon_resources\
