@@ -1,10 +1,20 @@
+rem author:	ypf791
+rem date:	2017/10/15
+
 @echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
 pushd .
+
 set srcdir=%~p0icon_src
 set config=%~p0config
-set __use_copy=1
+set __use_copy=
+
+for %%i in (%*) do (
+	if "%%i"=="-c" set __use_copy=1
+)
+
 if "%1"=="" ( cd .. ) else ( cd %1 )
+
 if exist __icon_resources (
 	echo Found __icon_resources\
 	echo Please run uninstall first before installing the icons.

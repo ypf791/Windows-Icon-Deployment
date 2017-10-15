@@ -1,7 +1,13 @@
+rem author:	ypf791
+rem date:	2017/10/15
+
 @echo off
 pushd .
+
 set config=%~p0config
+
 if "%1"=="" ( cd .. ) else ( cd %1 )
+
 if not exist __icon_resources (
 	echo You did not install icons. Nothing to uninstall.
 ) else (
