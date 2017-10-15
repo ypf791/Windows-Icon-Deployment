@@ -11,7 +11,7 @@ hidden `Desktop.ini` with respect to a formatted config file.
 
 ### Config
 
-The config is of the following format:
+The config file consists of lines of the same format:
 
 	<target_directory>:<icon_file>:<index>
 
@@ -27,16 +27,22 @@ The script can be called as following:
 
 	.\install.cmd [target_directory_root] [-s] [-c]
 
-All the parameters are optional. If you want to specify the root manually, it 
-must be the first parameter, though.
+All the parameters are optional. 
 
-The root is `..\` by default (note that double-click the script runs it with 
-no parameters).
+* target_directory_root
 
-The flag `-s` enables silence mode. The script won't pause on terminating.
+	The root is `..\` by default (note that double-click the script runs it 
+with no parameters). If you want to specify the root manually, it must be the 
+first parameter, though.
 
-The flag `-c` enables copy mode. The script copies icon files so that one can 
-remove the original ones after installation
+* silence mode
+
+	The flag `-s` enables silence mode. The script won't pause on terminating.
+
+* copy mode
+
+	The flag `-c` enables copy mode. The script copies icon files so that one 
+can remove the original ones after installation.
 
 ### Uninstall
 
@@ -44,4 +50,4 @@ The script can be called as following:
 
 	.\install.cmd [target_directory_root] [-s]
 
-The behaviours of the parameters are the same as in [Install][]
+The behaviours of the parameters are the same as in Install
